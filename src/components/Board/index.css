@@ -1,0 +1,57 @@
+.board {
+  background-image: url('./../../images//tic-tac-toe-bg.png');
+  background-size: cover;
+  display: grid;
+  grid-template: 1fr 1fr 1fr/1fr 1fr 1fr;
+  width: fit-content;
+  margin: 15px;
+}
+
+.cell {
+  display: flex;
+  width: 100px;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  font-size: 6em;
+  color: white;
+  text-shadow: 0 0 4px rgb(3, 40, 148);
+}
+
+.highlight {
+  color: royalblue;
+  font-weight: bolder;
+}
+
+.button {
+  border: none;
+  outline: none;
+  background-color: royalblue;
+  color: white;
+  padding: 10px 20px;
+  font-size: large;
+  font-weight: bold;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  box-shadow: 0px 0px 8px rgb(3, 40, 148);
+  width: fit-content;
+  background-color: wheat;
+  color: white;
+  text-align: center;
+  text-shadow: 0 0 4px rgb(3, 40, 148);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 600px;
+}
