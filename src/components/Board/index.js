@@ -2,16 +2,23 @@ import React, { useRef, useState, useLayoutEffect } from 'react';
 import Board from './../../model/Board';
 import './index.css';
 
+/* TODO:
+ * DISABLE RESET BUTTON WHILE GAME IS GOING ON
+ * ADD SOME ANIMATIONS TO THE BUTTON
+ * 
+ */
 function BoardView() {
 
   const boardRef = useRef(new Board());
   const [boardRep, setBoardRep] = useState(boardRef.current.toArray());
   const [win, setWin] = useState(boardRef.current.win);
-  const [gameOver, setGameOver] = useState(boardRef.current.gameOver);
+  const [draw, setDraw] = useState(boardRef.current.isDraw());
+  const [scores, setScores] = useState(boardRef.current.scores)
 
   useLayoutEffect(() => {
     setWin(boardRef.current.win);
-    setGameOver(boardRef.current.gameOver);
+    setDraw(boardRef.current.isDraw());
+    setScores(boardRef.current.scores);
   }, [boardRep]);
 
   return (
@@ -27,12 +34,16 @@ function BoardView() {
             </div>
           ))}
         </div>
+        <div className="scores">
+          <span>X: {scores.X}</span>
+          <span>O: {scores.O}</span>
+        </div>
         <button onClick={() => {
           boardRef.current.reset();
           setBoardRep(boardRef.current.toArray());
         }} className="button">Reset</button>
-        {gameOver && <h1>GAMEOVER!!!</h1>}
-        {win && <h2>{`${win.winner} wins`}</h2>}
+        {draw && <h1>DRAW</h1>}
+        {win && <h2>{`${win.winner} WINS`}</h2>}
       </div>
 
     </div >
