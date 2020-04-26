@@ -99,11 +99,33 @@ export default class Board {
     }
 
     /**
+     * @param {Number} cell being played
+     */
+    isWinningMove(cell) {
+        const player = this.currentPlayer === 'O' ? this.playerO : this.playerX;
+        let out;
+
+        if (this.isValidMove(cell)) {
+            const postState = player + Math.pow(2, cell);
+            Board.possibleWins.forEach((value, key) => {
+                if ((postState & key) === key) {
+                    out = {
+                        winner: this.currentPlayer,
+                        set: value
+                    };
+                    this.scores[out.winner] += 1;
+                }
+            });
+        }
+        return out;
+    }
+
+    /**
      * @returns {string[]}
      */
     toArray() {
-        const playerX = this.getXAsString();
-        const playerO = this.getOAsString();
+        const playerX = this.getAsString('X');
+        const playerO = this.getAsString('O');
         // console.log(playerX, playerO);
         const out = [];
 
@@ -117,19 +139,11 @@ export default class Board {
     }
 
     /**
-     * Returns the binary representation of X's state as string
+     * Returns the binary representation of X or O's state as string
      * @returns {string}
      */
-    getXAsString() {
-        return this.playerX.toString(2).padStart(9, '0');
-    }
-
-    /**
-     * Returns the binary representation of X's state as string
-     * @returns {string}
-     */
-    getOAsString() {
-        return this.playerO.toString(2).padStart(9, '0');
+    getAsString(XorO) {
+        return this[`player${XorO}`].toString(2).padStart(9, '0');
     }
 
     /**
@@ -142,4 +156,27 @@ export default class Board {
         this.gameOver = null;
     }
 
+    getPossibleMoves() {
+        const playerX = this.getAsString('X');
+        const playerO = this.getAsString('O');
+        // console.log(playerX, playerO);
+        const out = [];
+
+        for (let i = playerX.length - 1; i >= 0; i--) {
+            if (playerX[i] === '0' && playerO[i] === '0') out.push(8 - i)
+        }
+
+        return out;
+    }
+
+    static copy(board) {
+        const copy = new Board();
+        copy.playerO = board.playerO;
+        copy.playerX = board.playerX;
+        copy.scores = board.scores;
+        copy.currentPlayer = board.currentPlayer;
+        copy.gameOver = board.gameOver;
+        copy.win = board.win;
+        return copy;
+    }
 }

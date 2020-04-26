@@ -1,6 +1,6 @@
 {
-    "short_name": "Tic-Tac-Toe",
-    "name": "Play Tic-Tac-Toe",
+    "short_name": "Tic Tac Toe",
+    "name": "Play Tic Tac Toe",
     "icons": [{
             "src": "favicon.ico",
             "sizes": "64x64 32x32 24x24 16x16",
@@ -19,6 +19,6 @@
     ],
     "start_url": ".",
     "display": "standalone",
-    "theme_color": "#ffffff",
-    "background_color": "#4169e1"
+    "theme_color": "#4169e1",
+    "background_color": "#f5deb3"
 }
