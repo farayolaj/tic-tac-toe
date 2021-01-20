@@ -6,7 +6,7 @@ export default class MinMax {
   static EASY = 3;
   static HARD = 0;
 
-  constructor(player='X', maxDepth=7) {
+  constructor(player='X', maxDepth=5) {
     this.player = player;
     this.maxDepth = maxDepth;
   }
