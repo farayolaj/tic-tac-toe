@@ -1,5 +1,4 @@
-import React from 'react';
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const StyledButton = styled.button`
   box-sizing: content-box;
@@ -12,7 +11,7 @@ const StyledButton = styled.button`
   font: inherit;
   min-width: 100px;
   margin: 10px;
-  transition: all 500ms cubic-bezier(0.23, 1, 0.320, 1);
+  transition: all 500ms cubic-bezier(0.23, 1, 0.32, 1);
   box-shadow: 0px 0px 7px 1px black inset;
 
   &:hover {
@@ -22,12 +21,8 @@ const StyledButton = styled.button`
   &:active {
     background-color: rgb(3, 40, 148);
   }
-`
+`;
 
 export default function Button(props) {
-  return (
-    <StyledButton {...props}>
-      {/* {children} */}
-    </StyledButton>
-  );
+  return <StyledButton {...props}>{/* {children} */}</StyledButton>;
 }
